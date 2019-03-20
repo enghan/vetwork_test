@@ -15,14 +15,20 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_verification_code_input:
+     git:
+      url: git://github.com/tinylife-io/flutter_verification_code_input.git
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
+  flutter_tags: ^0.2.1
+  http: ^0.11.3+17
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
 
 # For information on the generic Dart part of this file, see the
@@ -31,12 +37,21 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
 
+
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
   assets:
-     - assets/splash.png
+   - assets/dog.png
+   - assets/cat.png
+   - assets/health.png
+   - assets/hair_brush.png
+   - assets/another.png
+   - assets/logo.png
+   - assets/pet_background.png
+
+
 
   # To add assets to your application, add an assets section, like this:
   # assets:
