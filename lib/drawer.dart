@@ -14,7 +14,7 @@ class drawer extends StatelessWidget{
 
     // TODO: implement build
     return Scaffold(
-      //  appBar: new AppBar(),
+        appBar: new AppBar(),
         drawer: Drawer(child:builddrawer()),
         resizeToAvoidBottomPadding: false,
 
@@ -99,7 +99,7 @@ Widget buildheaderText(){
       mainAxisAlignment: MainAxisAlignment.start, crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
        Row(children: <Widget>[
-        IconButton(icon:Icon( Icons.menu), onPressed: () => Scaffold.of(_context).openDrawer()),
+      //  IconButton(icon:Icon( Icons.menu), onPressed: () => Scaffold.of(_context).openDrawer()),
 
          SizedBox(width: 10.0,),
          Image.asset('assets/logo.png')

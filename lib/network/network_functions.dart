@@ -1,4 +1,4 @@
-import 'dart:_http';
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:vetwork_test/Model/Connect.dart';
@@ -8,11 +8,11 @@ import 'package:vetwork_test/Model/Get_Labels.dart';
 import 'package:vetwork_test/Model/Verify_User_Request.dart';
 import 'package:vetwork_test/Model/Confirm_User_Token.dart';
 import 'package:vetwork_test/Model/Add_New_Address.dart';
-import 'package:vetwork_test/setting.dart';
+import 'package:glob/glob.dart' as globals;
+
 class network_functions {
 
-  ButtonOptions v =new ButtonOptions();
- // v.submitStr;
+ // var st =globals.submitStr;
   Future<Connect> Connected() async {
     final response =
     await http.get('https://jsonplaceholder.typicode.com/posts/1');
@@ -80,17 +80,17 @@ class network_functions {
     });
   }
 
-  Future<String> DeleteAddress(String url, Map jsonMap) async {
-    HttpClient httpClient = new HttpClient();
-    httpClient.open('delete', url, 0, '/users');
-    httpClient.close();
-    return 'Success';
-  }
-
-  Future<String> UpdateAddress(String url, Map jsonMap) async {
-    HttpClient httpClient = new HttpClient();
-    httpClient.open('', url, 0, '/users');
-    httpClient.close();
-    return 'Success';
-  }
+//  Future<String> DeleteAddress(String url, Map jsonMap) async {
+//    HttpClient httpClient = new HttpClient();
+//    httpClient.open('delete', url, 0, '/users');
+//    httpClient.close();
+//    return 'Success';
+//  }
+//
+//  Future<String> UpdateAddress(String url, Map jsonMap) async {
+//    HttpClient httpClient = new HttpClient();
+//    httpClient.open('', url, 0, '/users');
+//    httpClient.close();
+//    return 'Success';
+//  }
 }

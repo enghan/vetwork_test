@@ -9,9 +9,10 @@ import 'credit_card_detail.dart';
 import 'Contact_with_dr.dart';
 import 'Rating.dart';
 import 'setting.dart';
+import 'set_language.dart';
 
 void main() => runApp(MaterialApp(
-      home: drawer(),
+      home: set_language(),
     routes : {
   '/drawer': (context) => drawer(),
   '/home': (context) => home(),
@@ -23,6 +24,7 @@ void main() => runApp(MaterialApp(
       '/Contact_with_dr' :(context) => Contact_with_dr(),
       '/Rating':(context) =>Rating(),
       '/setting':(context) =>setting(),
+
 
 },
     ));

@@ -3,6 +3,7 @@ import 'cancel_backButton.dart';
 import 'drawer.dart';
 import 'home.dart';
 import 'setting.dart';
+
 //class setting extends StatelessWidget {
 //  BuildContext _context;
 //
@@ -85,26 +86,28 @@ import 'setting.dart';
 
 
 class setting extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(home: new ButtonOptions());
+
   }
 }
 
 class ButtonOptions extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() {
     return new ButtonOptionsState();
   }
 }
-
 class ButtonOptionsState extends State<ButtonOptions> {
 
- final TextEditingController controller ;
+ final TextEditingController controller =TextEditingController();
   String str = "";
-  static  String submitStr = "";
-
-   ButtonOptionsState({this.controller});
+    String submitStr = "";
+final formKey=GlobalKey<FormState>();
 
   void _changeText(String val) {
     setState(() {
@@ -130,8 +133,10 @@ class ButtonOptionsState extends State<ButtonOptions> {
       appBar: new AppBar(
         title: new Text('First Screen'),
       ),
+      key: formKey,
       drawer: builddrawer(),
       body: new Container(
+
         padding: const EdgeInsets.all(10.0),
         child: new Column(
           children: <Widget>[
@@ -155,6 +160,10 @@ class ButtonOptionsState extends State<ButtonOptions> {
                 _changeText(controller.text);
                 // countT();
                 controller.text = "";
+                var form=formKey.currentState;
+               if( form.validate()){
+                 form.save();
+               }
 
               },
             ),
