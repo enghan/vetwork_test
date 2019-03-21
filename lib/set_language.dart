@@ -15,12 +15,14 @@ class set_language extends StatelessWidget {
 
 
 
+
+
+
   bool Visit_check = false;
   bool priority_check = false;
   bool selected = false;
   String response ;
-var _lbl;
-var _lng;
+
   final Future<Check_Versions> check;
 
    set_language({Key key, this.check}) : super(key: key);
@@ -52,7 +54,9 @@ var _lng;
         SizedBox(
           height: 20.0,
         ),
-        data(),
+
+       data_Get_Label(),
+        data_check_version(),
       ],
     );
 
@@ -104,24 +108,13 @@ var _lng;
   Widget buildNext() {
     return Next_button(() => Navigator.pushNamed(_context, "/drawer"));
   }}
-Future<Check_Versions> checkversion() async {
 
-  final _response =
-  await http.get('http://us-central1-vetpet-bd573.cloudfunctions.net/pet/app/checkversion');
+network_functions  x =network_functions();
 
-  if (_response.statusCode == 200) {
-    print(json.decode(_response.body));
-    return Check_Versions.fromJson(json.decode(_response.body));
-
-  } else {
-    throw Exception('Failed -');
-  }
-
-}
-Widget data(){
+Widget data_check_version(){
   return Center(
     child: FutureBuilder<Check_Versions>(
-      future: checkversion(),
+      future: x.checkversion(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
 
@@ -130,11 +123,39 @@ Widget data(){
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
-        void sae(){
-          var  lng=snapshot.data.langVersion.toString();
-          var  _lbl=snapshot.data.langVersion.toString();
+        void save(){
+          var  _lbl=snapshot.data.lblVersion.toString();
 
-          savepreference(lng).then((bool comitted){
+          savepreference(_lbl).then((bool comitted){
+            Navigator.pushNamed(context, '/drawer');
+          });
+        }
+
+        return CircularProgressIndicator();
+      },
+    ),
+  );
+}
+Widget data_Get_Label(){
+  return Center(
+    child: FutureBuilder<Get_Labels>(
+      future: x.GetLabels().then((v){
+
+      }).catchError((e){
+      }),
+
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+
+
+          return Text(snapshot.data.version.toString());
+        } else if (snapshot.hasError) {
+          return Text("${snapshot.error}");
+        }
+        void save(){
+          var  _lbl=snapshot.data.version.toString();
+
+          savepreference(_lbl).then((bool comitted){
             Navigator.pushNamed(context, '/drawer');
           });
         }
@@ -145,36 +166,28 @@ Widget data(){
   );
 }
 
+
 Future<bool> savepreference(String name) async{
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String _lng;
-  String _lbl;
-  prefs.setString("lng version", _lng);
-  prefs.setString("lbl version", _lbl);
+
+  prefs.setString("lbl version", name);
   prefs.commit();
 }
 Future<String> getpreference(String name) async{
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String lng=   prefs.getString("lng version");
   String lbl=   prefs.getString("lbl version");
   if(lbl !=null){
-    GetLabels();
-  }
-  prefs.getString("lbl version");
-  return lng;
-}
-Future<Get_Labels> GetLabels() async {
-  final response =
-  await http.get('https://jsonplaceholder.typicode.com/posts/1');
+    network_functions  x =network_functions();
+    x.GetLabels().then((v){
 
-  if (response.statusCode == 200) {
-    return Get_Labels.fromJson(json.decode(response.body));
-  } else {
-    throw Exception('Failed to load post');
-  }
+    }).catchError((e){
+  });}
+  prefs.getString("lbl version");
+  return lbl;
 }
+
 Widget build_payment_statement() {
 
   return Container(

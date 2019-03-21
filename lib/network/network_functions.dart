@@ -26,9 +26,10 @@ class network_functions {
 
   Future<Check_Versions> checkversion() async {
     final response =
-    await http.get('https://jsonplaceholder.typicode.com/posts/1');
+    await http.get('http://us-central1-vetpet-bd573.cloudfunctions.net/pet/app/checkversion');
 
     if (response.statusCode == 200) {
+      print(response.body);
       return Check_Versions.fromJson(json.decode(response.body));
     } else {
       throw Exception('Failed to load post');
@@ -38,10 +39,13 @@ class network_functions {
 
   Future<Get_Labels> GetLabels() async {
     final response =
-    await http.get('https://jsonplaceholder.typicode.com/posts/1');
+    await http.get('http://us-central1-vetpet-bd573.cloudfunctions.net/pet/app/Labels/Version/0');
 
     if (response.statusCode == 200) {
+      print(response.body);
+
       return Get_Labels.fromJson(json.decode(response.body));
+
     } else {
       throw Exception('Failed to load post');
     }
