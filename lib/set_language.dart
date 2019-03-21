@@ -7,6 +7,7 @@ import 'UI/folder_style/AppStyles.dart';
 import 'Next_button.dart';
 import 'cancel_backButton.dart';
 import 'network/network_functions.dart';
+import 'Model/Get_Labels.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class set_language extends StatelessWidget {
 
@@ -151,15 +152,29 @@ Future<bool> savepreference(String name) async{
   String _lbl;
   prefs.setString("lng version", _lng);
   prefs.setString("lbl version", _lbl);
+  prefs.commit();
 }
 Future<String> getpreference(String name) async{
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   String lng=   prefs.getString("lng version");
+  String lbl=   prefs.getString("lbl version");
+  if(lbl !=null){
+    GetLabels();
+  }
   prefs.getString("lbl version");
   return lng;
 }
+Future<Get_Labels> GetLabels() async {
+  final response =
+  await http.get('https://jsonplaceholder.typicode.com/posts/1');
 
+  if (response.statusCode == 200) {
+    return Get_Labels.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Failed to load post');
+  }
+}
 Widget build_payment_statement() {
 
   return Container(
