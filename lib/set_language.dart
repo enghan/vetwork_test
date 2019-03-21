@@ -7,6 +7,7 @@ import 'UI/folder_style/AppStyles.dart';
 import 'Next_button.dart';
 import 'cancel_backButton.dart';
 import 'network/network_functions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class set_language extends StatelessWidget {
 
   BuildContext _context;
@@ -17,7 +18,8 @@ class set_language extends StatelessWidget {
   bool priority_check = false;
   bool selected = false;
   String response ;
-network_functions net;
+var _lbl;
+var _lng;
   final Future<Check_Versions> check;
 
    set_language({Key key, this.check}) : super(key: key);
@@ -104,14 +106,14 @@ network_functions net;
 Future<Check_Versions> checkversion() async {
 
   final _response =
-  await http.get('https://us-central1-vetpet-bd573.cloudfunctions.net/pet/app/checkversion');
+  await http.get('http://us-central1-vetpet-bd573.cloudfunctions.net/pet/app/checkversion');
 
   if (_response.statusCode == 200) {
     print(json.decode(_response.body));
     return Check_Versions.fromJson(json.decode(_response.body));
 
   } else {
-    throw Exception('Failed ');
+    throw Exception('Failed -');
   }
 
 }
@@ -121,16 +123,41 @@ Widget data(){
       future: checkversion(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+
+
           return Text(snapshot.data.lblVersion.toString());
         } else if (snapshot.hasError) {
           return Text("${snapshot.error}");
         }
+        void sae(){
+          var  lng=snapshot.data.langVersion.toString();
+          var  _lbl=snapshot.data.langVersion.toString();
 
-        // By default, show a loading spinner
+          savepreference(lng).then((bool comitted){
+            Navigator.pushNamed(context, '/drawer');
+          });
+        }
+
         return CircularProgressIndicator();
       },
     ),
   );
+}
+
+Future<bool> savepreference(String name) async{
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String _lng;
+  String _lbl;
+  prefs.setString("lng version", _lng);
+  prefs.setString("lbl version", _lbl);
+}
+Future<String> getpreference(String name) async{
+
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String lng=   prefs.getString("lng version");
+  prefs.getString("lbl version");
+  return lng;
 }
 
 Widget build_payment_statement() {
@@ -143,3 +170,4 @@ Widget build_payment_statement() {
             Text("language :",style: textStyleH2,)
 
           ]));}
+
