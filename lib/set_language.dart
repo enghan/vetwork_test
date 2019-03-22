@@ -16,7 +16,7 @@ class set_language extends StatelessWidget {
 
 
 
-
+  Get_Labels mylabels;
 
   bool Visit_check = false;
   bool priority_check = false;
@@ -56,7 +56,7 @@ class set_language extends StatelessWidget {
         ),
         savegatlabel(),
        //data_Get_Label(),
-        data_check_version(),
+        savegatcheckversion(),
       ],
     );
 
@@ -111,99 +111,104 @@ class set_language extends StatelessWidget {
 
 network_functions  x =network_functions();
 
-Widget data_check_version(){
-  return Center(
-    child: FutureBuilder<Check_Versions>(
-      future: x.checkversion(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-
-
-          return Text(snapshot.data.lblVersion.toString());
-        } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
-        }
-        void save(){
-          var  _lbl=snapshot.data.lblVersion.toString();
-
-          savepreference(_lbl).then((bool comitted){
-            Navigator.pushNamed(context, '/drawer');
-          });
-        }
-
-        return CircularProgressIndicator();
-      },
-    ),
-  );
-}
- savegatlabel(){
- // List data=await x.GetLabels();
-  //for(int x=0;x<data.length;x++){
-
-   // print(data[0]["version"]);
-
-//     Get_Labels labels = await  x.GetLabels();
+//Widget data_check_version(){
+//  return Center(
+//    child: FutureBuilder<Check_Versions>(
+//      future: x.checkversion(),
+//      builder: (context, snapshot) {
+//        if (snapshot.hasData) {
 //
-//     print(labels.version);
+//
+//          return Text(snapshot.data.lblVersion.toString());
+//        } else if (snapshot.hasError) {
+//          return Text("${snapshot.error}");
+//        }
+//        void save(){
+//          var  _lbl=snapshot.data.lblVersion.toString();
+//
+//          savepreference(_lbl).then((bool comitted){
+//            Navigator.pushNamed(context, '/drawer');
+//          });
+//        }
+//
+//        return CircularProgressIndicator();
+//      },
+//    ),
+//  );
+//}
+ savegatlabel(){
+
+   Get_Labels mylabels;
      x.GetLabels().then((version) {
 
+     mylabels=version;
+    // print(mylabels);
+     print(mylabels.version);
      }).catchError((error) {
 
      }).whenComplete(() {
 
      });
+
+
+
+}
+savegatcheckversion(){
+Check_Versions check;
+  x.checkversion().then((v) {
+  check = v;
+  savepreference("lbl", check.lblVersion.toString());
+  getpreference("lbl");
+
+  });
 //
 
 
 }
-Widget data_Get_Label(){
-  return Center(
-    child:FutureBuilder<Get_Labels>(
-      future: x.GetLabels(),
+//Widget data_Get_Label(){
+//  return Center(
+//    child:FutureBuilder<Get_Labels>(
+//      future: x.GetLabels(),
+//
+//      builder: (context, snapshot) {
+//        if (snapshot.hasData) {
+//
+//
+//          return Text(snapshot.data.version.toString());
+//        } else if (snapshot.hasError) {
+//          return Text("${snapshot.error}");
+//        }
+//        void save(){
+//          var  _lbl=snapshot.data.version.toString();
+//
+//          savepreference(_lbl).then((bool comitted){
+//            Navigator.pushNamed(context, '/drawer');
+//          });
+//        }
+//
+//        return CircularProgressIndicator();
+//      },
+//    ),
+//  );
+//}
 
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
 
-
-          return Text(snapshot.data.version.toString());
-        } else if (snapshot.hasError) {
-          return Text("${snapshot.error}");
-        }
-        void save(){
-          var  _lbl=snapshot.data.version.toString();
-
-          savepreference(_lbl).then((bool comitted){
-            Navigator.pushNamed(context, '/drawer');
-          });
-        }
-
-        return CircularProgressIndicator();
-      },
-    ),
-  );
-}
-
-
-Future<bool> savepreference(String name) async{
+Future<bool> savepreference(String name,String value) async{
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
-  prefs.setString("lbl version", name);
+  prefs.setString(name,value );
   prefs.commit();
 }
 Future<String> getpreference(String name) async{
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String lbl=   prefs.getString("lbl version");
-  if(lbl !=null){
-    network_functions  x =network_functions();
-    x.GetLabels().then((v){
+  String lbl=   prefs.getString(name);
 
-    }).catchError((e){
-  });}
-  prefs.getString("lbl version");
+print(lbl);
   return lbl;
 }
+
 
 Widget build_payment_statement() {
 
