@@ -54,8 +54,8 @@ class set_language extends StatelessWidget {
         SizedBox(
           height: 20.0,
         ),
-
-       data_Get_Label(),
+        savegatlabel(),
+       //data_Get_Label(),
         data_check_version(),
       ],
     );
@@ -136,13 +136,30 @@ Widget data_check_version(){
     ),
   );
 }
+ savegatlabel(){
+ // List data=await x.GetLabels();
+  //for(int x=0;x<data.length;x++){
+
+   // print(data[0]["version"]);
+
+//     Get_Labels labels = await  x.GetLabels();
+//
+//     print(labels.version);
+     x.GetLabels().then((version) {
+
+     }).catchError((error) {
+
+     }).whenComplete(() {
+
+     });
+//
+
+
+}
 Widget data_Get_Label(){
   return Center(
-    child: FutureBuilder<Get_Labels>(
-      future: x.GetLabels().then((v){
-
-      }).catchError((e){
-      }),
+    child:FutureBuilder<Get_Labels>(
+      future: x.GetLabels(),
 
       builder: (context, snapshot) {
         if (snapshot.hasData) {

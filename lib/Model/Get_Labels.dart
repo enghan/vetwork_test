@@ -154,7 +154,7 @@ class ReqStatus {
   int id;
   int version;
   String labelCode;
-  Null imgUrl;
+  String imgUrl;
 
   ReqStatus({this.id, this.version, this.labelCode, this.imgUrl});
 
@@ -179,7 +179,7 @@ class ReqTyps {
   int id;
   int version;
   String labelCode;
-  Null imgUrl;
+  String imgUrl;
 
   ReqTyps({this.id, this.version, this.labelCode, this.imgUrl});
 
@@ -227,7 +227,7 @@ class Svcs {
   int version;
   String labelCode;
   int svcTypId;
-  Null imgUrl;
+  String imgUrl;
 
   Svcs({this.id, this.version, this.labelCode, this.svcTypId, this.imgUrl});
 
@@ -256,7 +256,7 @@ class Sizes {
   String labelCode;
   int petTypId;
   int order;
-  Null imgUrl;
+  String imgUrl;
 
   Sizes(
       {this.id,

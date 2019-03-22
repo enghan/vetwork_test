@@ -32,7 +32,7 @@ class network_functions {
       print(response.body);
       return Check_Versions.fromJson(json.decode(response.body));
     } else {
-      throw Exception('Failed to load post');
+      throw Exception('Failed ');
     }
   }
 
@@ -47,7 +47,7 @@ class network_functions {
       return Get_Labels.fromJson(json.decode(response.body));
 
     } else {
-      throw Exception('Failed to load post');
+      throw Exception('Failed to load labels');
     }
   }
 
