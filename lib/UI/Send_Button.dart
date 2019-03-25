@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'UI/folder_style/ui_constants.dart';
+import 'folder_style/ui_constants.dart';
 
-class Next_button extends StatelessWidget {
+class Send_Button extends StatelessWidget {
   VoidCallback onCustomButtonPressed;
 
-  Next_button(this.onCustomButtonPressed);
+  Send_Button(this.onCustomButtonPressed);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class Next_button extends StatelessWidget {
           disabledColor: Colors.grey,
           highlightColor: Colors.blue,
           child: Text(
-            'Next',
+            'Send',
 
           ),
           onPressed: onCustomButtonPressed,

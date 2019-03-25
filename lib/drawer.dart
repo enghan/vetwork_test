@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:vetwork_test/drawer_file/home.dart';
 import 'UI/folder_style/ui_constants.dart';
 import 'Model/exist_address.dart';
 import 'UI/folder_style/ui_constants.dart';
 import 'UI/folder_style/AppStyles.dart';
 import 'Model/pet.dart';
-
+import 'package:vetwork_test/drawer_file/My_profile.dart';
+import 'package:vetwork_test/drawer_file/my_pets.dart';
+import 'package:vetwork_test/drawer_file/Contact_us.dart';
 class drawer extends StatelessWidget{
   BuildContext _context;
   @override
@@ -141,7 +143,8 @@ Widget buildheaderText(){
           ListTile(
             trailing: Icon(Icons.person),
             title: Text('My Profile'),
-            onTap: () {
+            onTap: () { Navigator.push(_context, new MaterialPageRoute(
+                builder: (context) => new MY_profile()));
 
             },
           ),
@@ -149,6 +152,8 @@ Widget buildheaderText(){
             trailing: Icon(Icons.pets),
             title: Text('My Pets'),
             onTap: () {
+              Navigator.push(_context, new MaterialPageRoute(
+                  builder: (context) => new my_pets()));
 
             },
           ),
@@ -192,6 +197,8 @@ Widget buildheaderText(){
             trailing: Icon(Icons.message),
             title: Text('Contact Us'),
             onTap: () {
+              Navigator.push(_context, new MaterialPageRoute(
+                  builder: (context) => new Contact_us()));
 
             },
           ),
@@ -341,7 +348,7 @@ Widget build_header(){
           SizedBox(width: 10.0,),
           Icon(Icons.error_outline),
           SizedBox(width: 10.0,),
-          Text("you have recently added a new pet \tTap to Complete '$_name' Profile")
+          Text("you have recently added a new pet Tap to \tComplete '$_name' Profile")
 
         ],)
 

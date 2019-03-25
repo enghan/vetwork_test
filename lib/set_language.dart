@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:vetwork_test/Model/Check_Versions.dart';
 import 'package:http/http.dart' as http;
 import 'UI/folder_style/AppStyles.dart';
-import 'Next_button.dart';
-import 'cancel_backButton.dart';
+import 'package:vetwork_test/UI/Next_button.dart';
+import 'package:vetwork_test/UI/cancel_backButton.dart';
 import 'network/network_functions.dart';
 import 'Model/Get_Labels.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,9 +54,9 @@ class set_language extends StatelessWidget {
         SizedBox(
           height: 20.0,
         ),
-        savegatlabel(),
+       // savegatlabel(),
        //data_Get_Label(),
-        savegatcheckversion(),
+     //   savegatcheckversion(),
       ],
     );
 
@@ -136,35 +136,35 @@ network_functions  x =network_functions();
 //    ),
 //  );
 //}
- savegatlabel(){
+// savegatlabel(){
+//
+//   Get_Labels mylabels;
+//     x.GetLabels().then((version) {
+//
+//     mylabels=version;
+//    // print(mylabels);
+//     print(mylabels.version);
+//     }).catchError((error) {
+//
+//     }).whenComplete(() {
+//
+//     });
 
-   Get_Labels mylabels;
-     x.GetLabels().then((version) {
-
-     mylabels=version;
-    // print(mylabels);
-     print(mylabels.version);
-     }).catchError((error) {
-
-     }).whenComplete(() {
-
-     });
 
 
-
-}
-savegatcheckversion(){
-Check_Versions check;
-  x.checkversion().then((v) {
-  check = v;
-  savepreference("lbl", check.lblVersion.toString());
-  getpreference("lbl");
-
-  });
+//}
+//savegatcheckversion(){
+//Check_Versions check;
+//  x.checkversion().then((v) {
+//  check = v;
+//  savepreference("lbl", check.lblVersion.toString());
+//  getpreference("lbl");
+//
+//  });
 //
 
 
-}
+//}
 //Widget data_Get_Label(){
 //  return Center(
 //    child:FutureBuilder<Get_Labels>(

@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'UI/folder_style/AppStyles.dart';
 import 'UI/folder_style/ui_constants.dart';
-import 'cancel_backButton.dart';
-import 'Next_button.dart';
+import 'package:vetwork_test/UI/cancel_backButton.dart';
+import 'package:vetwork_test/UI/Next_button.dart';
 import'package:flutter_verification_code_input/flutter_verification_code_input.dart';
 import 'dart:async';
 class add_address extends StatelessWidget {
@@ -20,7 +20,6 @@ class add_address extends StatelessWidget {
     // TODO: implement build
     return Scaffold(
         resizeToAvoidBottomPadding: false,
-
         body: buildPageContainer());
   }
 
@@ -200,7 +199,8 @@ class add_address extends StatelessWidget {
             value: boolValue,
             onChanged: (bool value) {},
           ),
-          Text(title),
+          InkWell(child: Text(title),)
+
         ],
       ),
     );

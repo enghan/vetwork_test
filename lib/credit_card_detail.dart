@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'UI/folder_style/AppStyles.dart';
 import 'UI/folder_style/ui_constants.dart';
-import 'cancel_backButton.dart';
-import 'Next_button.dart';
+import 'package:vetwork_test/UI/cancel_backButton.dart';
+import 'package:vetwork_test/UI/Next_button.dart';
 import 'Contact_with_dr.dart';
 class credit_card_detail extends StatelessWidget {
   final Widget child;
   List<String> _Month= <String>['January', 'February', 'March', 'April', 'May','June','July','August','September','October','November','December'];
-  List<String> _Year= <String>['2019','2020','2021','2022','2023','2024','2025','2026','2027','2028','2029','2030',];
+  List<String> _Year= <String>['2019','2020','2021','2022','2023'];
 
   bool _check = false;
   credit_card_detail({Key key, this.child}) : super(key: key);
@@ -28,6 +28,10 @@ class credit_card_detail extends StatelessWidget {
     var lstView = ListView(
       children: <Widget>[
         buildHeaderActions(),
+        SizedBox(
+          height: 20.0,
+        ),
+        build_photo_header(),
         SizedBox(
           height: 20.0,
         ),
@@ -72,6 +76,13 @@ class credit_card_detail extends StatelessWidget {
       padding: EdgeInsets.all(20.0),
     );
   }
+  Widget build_photo_header(){
+    return Row(
+      children: <Widget>[
+        Image.asset('assets/credit_cards.png')
+      ],
+    );
+  }
   Widget build_card_header() {
     return Container(
 
@@ -111,8 +122,10 @@ Widget build_Card_number(){
     TextField(
       decoration: InputDecoration(
         hintText: "1111 2222 3333 9999",labelText: "CARD NUMBER :" ,
+        suffix: Image.asset('assets/visa.png'),
         ),
       keyboardType: TextInputType.number,
+      
     );}
   Widget build_CVC_number(){
 

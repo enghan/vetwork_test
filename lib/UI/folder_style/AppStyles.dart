@@ -15,7 +15,8 @@ TextStyle textStyleH4 = const TextStyle(
     color: clrLightGray, fontSize:12.0, fontWeight: FontWeight.bold);
 TextStyle textStyleH5 = const TextStyle(
     color: clrLightGray, fontSize:18.0, );
-
+TextStyle textStyleH6 = const TextStyle(
+  color: clrLightGray, fontSize:15.0, );
 TextStyle textStyleH4a = const TextStyle(
     color: clrBlack, fontSize:12.0, fontWeight: FontWeight.bold);
 

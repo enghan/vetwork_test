@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'UI/folder_style/AppStyles.dart';
 import 'UI/folder_style/ui_constants.dart';
 import 'Model/exist_address.dart';
-import 'add_address.dart';
+import 'Payment_service.dart';
 import 'UI/folder_style/colors.dart';
-import 'cancel_backButton.dart';
-import 'Next_button.dart';
+import 'package:vetwork_test/UI/cancel_backButton.dart';
+import 'package:vetwork_test/UI/Next_button.dart';
 class request_information extends StatelessWidget {
     final Widget child;
   BuildContext _context;
@@ -94,7 +94,7 @@ class request_information extends StatelessWidget {
     }
 
   Widget buildNext() {
-    return Next_button(() => Navigator.pushNamed(_context, "/add_address"));
+    return Next_button(() => Navigator.pushNamed(_context, "/Payment_service"));
   }
 
 Widget test(){

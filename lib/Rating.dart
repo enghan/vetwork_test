@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'UI/folder_style/ui_constants.dart';
 import 'UI/folder_style/ui_constants.dart';
 import 'UI/folder_style/AppStyles.dart';
-import 'Next_button.dart';
-import 'cancel_backButton.dart';
+import 'package:vetwork_test/UI/Next_button.dart';
+import 'package:vetwork_test/UI/cancel_backButton.dart';
 class Rating extends StatelessWidget{
   BuildContext _context;
   @override

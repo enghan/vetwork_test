@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'home.dart';
+import 'package:vetwork_test/drawer_file/home.dart';
 import 'drawer.dart';
-import 'pet_profile.dart';
+import 'package:vetwork_test/drawer_file/pet_profile.dart';
 import 'request_information.dart';
 import 'add_address.dart';
 class routes_class {
