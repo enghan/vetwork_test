@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'UI/folder_style/ui_constants.dart';
-import 'UI/folder_style/ui_constants.dart';
 import 'UI/folder_style/AppStyles.dart';
 import 'package:vetwork_test/UI/Next_button.dart';
 import 'package:vetwork_test/UI/cancel_backButton.dart';
